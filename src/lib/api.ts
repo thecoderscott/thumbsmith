@@ -13,20 +13,20 @@ const filenameFromCD = (h?: string | null) => {
 export async function generateThumb(data: FormData): Promise<GenerateResponse> {
   const fd = new globalThis.FormData()
 
+  fd.set('style', data.style);
+  fd.set('strength', data.strength.toString());
+  fd.set('edge_color', data.borderHex);
+  fd.set('edge_alpha', data.borderAlpha.toString());
+  fd.set('width', data.width.toString());
+  fd.set('height', data.height.toString());
   if (data.screenshot_file) fd.set('screenshot', data.screenshot_file);
   if (data.channel_logo_file) fd.set('logo', data.channel_logo_file);
   if (data.game_logo_file) fd.set('game_logo', data.game_logo_file);
-  fd.set('season', String(data.season));
-  fd.set('episode', String(data.episode));
+  if (data.season) fd.set('season_raw', data.season.toString());
+  if (data.episode) fd.set('episode_raw', data.episode.toString());
   if (data.title && data.title !== "") fd.set('title', data.title);
-  fd.set('style', data.style);
-  fd.set('strength', String(data.strength));
-  fd.set('edge_color', data.borderHex);
-  fd.set('edge_alpha', String(data.borderAlpha ?? 0));
-  if (data.overlayHex) fd.set('overlay_color', data.overlayHex)
-  if (data.overlayHex) fd.set('overlay_alpha', String(data.overlayAlpha ?? 0))
-  fd.set('width', String(data.width))
-  fd.set('height', String(data.height))
+  if (data.overlayHex) fd.set('overlay_color', data.overlayHex);
+  if (data.overlayHex) fd.set('overlay_alpha', data.overlayAlpha.toString() ?? 0);
 
   try {
     const res = await fetch(`${BASE}/v1/generate`, {

@@ -45,6 +45,7 @@ const ThumbnailForm = () => {
   }, [formData.screenshot_file])
 
   const onGenerate = async () => {
+    console.log({ formData })
     const parsed = FormSchema.safeParse(formData);
 
     if (!parsed.success) {
@@ -174,12 +175,12 @@ const ThumbnailForm = () => {
 
         <div className="row">
           <label htmlFor="season">Season</label>
-          <input id="season" type="text" value={formData.season || undefined} onChange={e => onHandleFieldUpdate("season", parseInt(e.target.value))} />
+          <input id="season" type="text" value={formData.season || undefined} onChange={e => onHandleFieldUpdate("season", e.target.value)} />
         </div>
 
         <div className="row">
           <label htmlFor="episode">Episode</label>
-          <input id="episode" type="text" value={formData.episode || undefined} onChange={e => onHandleFieldUpdate("episode", parseInt(e.target.value))} />
+          <input id="episode" type="text" value={formData.episode || undefined} onChange={e => onHandleFieldUpdate("episode", e.target.value)} />
         </div>
 
         <div className="row">

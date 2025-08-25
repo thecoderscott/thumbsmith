@@ -173,6 +173,18 @@ const ThumbnailForm = () => {
         </div>
 
         <div className="row">
+          <label htmlFor="season">Season</label>
+          <input id="season" type="number" value={formData.season || undefined} onChange={e => onHandleFieldUpdate("season", parseInt(e.target.value))} />
+          <div className="help">Only used if game logo not provided.</div>
+        </div>
+
+        <div className="row">
+          <label htmlFor="episode">Episode</label>
+          <input id="episode" type="number" value={formData.episode || undefined} onChange={e => onHandleFieldUpdate("episode", parseInt(e.target.value))} />
+          <div className="help">Only used if game logo not provided.</div>
+        </div>
+
+        <div className="row">
           <label htmlFor="style">Style</label>
           <select id="style" value={formData.style} onChange={e => onHandleFieldUpdate("style", e.target.value)}>
             <option value={`${ThumbnailOptions.game}`}>Game</option>

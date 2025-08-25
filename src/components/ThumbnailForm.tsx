@@ -174,14 +174,12 @@ const ThumbnailForm = () => {
 
         <div className="row">
           <label htmlFor="season">Season</label>
-          <input id="season" type="number" value={formData.season || undefined} onChange={e => onHandleFieldUpdate("season", parseInt(e.target.value))} />
-          <div className="help">Only used if game logo not provided.</div>
+          <input id="season" type="text" value={formData.season || undefined} onChange={e => onHandleFieldUpdate("season", parseInt(e.target.value))} />
         </div>
 
         <div className="row">
           <label htmlFor="episode">Episode</label>
-          <input id="episode" type="number" value={formData.episode || undefined} onChange={e => onHandleFieldUpdate("episode", parseInt(e.target.value))} />
-          <div className="help">Only used if game logo not provided.</div>
+          <input id="episode" type="text" value={formData.episode || undefined} onChange={e => onHandleFieldUpdate("episode", parseInt(e.target.value))} />
         </div>
 
         <div className="row">
